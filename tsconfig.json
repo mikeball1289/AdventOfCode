@@ -63,5 +63,6 @@
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["./days/**/*.ts"]
+  "include": ["./days/**/*.ts", "./lib/**/*.ts"],
+  "exclude": ["./**/*.test.ts"]
 }
