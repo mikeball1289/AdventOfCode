@@ -1,11 +1,7 @@
 {
   "name": "adventofcode2020",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "description": "Solutions for the Advent of Code 2020 (https://adventofcode.com/2020)",
   "scripts": {
     "build": "tsc -p .",
     "clean": "rimraf bin",
@@ -15,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/mikeball1289/AdventOfCode2020.git"
   },
-  "author": "",
+  "author": "Mike Ball",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mikeball1289/AdventOfCode2020/issues"
