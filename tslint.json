@@ -1,6 +1,15 @@
 {
     "extends": "tslint:latest",
     "rules": {
-        "no-console": false
+        "no-console": false,
+        "semicolon": true,
+        "one-line": [
+            true,
+            "check-open-brace",
+            "check-else",
+            "check-catch",
+            "check-finally"
+        ],
+        "eofline": true
     }
 }
