@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { parseLine, passwordSatisfiesRequirement, passwordSatisfiesTobogganRequirement } from '../lib/passwords';
+import { parseLine, passwordSatisfiesRequirement, passwordSatisfiesTobogganRequirement } from '../../lib/passwords';
 
 const input = readFileSync('./input/day2input.txt', 'ascii');
 const lines = input.split('\n').filter(s => s !== ''); // trim blank lines

@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { parseLine, passwordSatisfiesRequirement, passwordSatisfiesTobogganRequirement } from '../lib/passwords';
+import { parseLine, passwordSatisfiesRequirement, passwordSatisfiesTobogganRequirement } from '../../lib/passwords';
 
 describe('Day 2 - Password Philosophy', () => {
     test('Part 1 solves', () => {

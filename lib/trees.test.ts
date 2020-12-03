@@ -61,7 +61,26 @@ describe('TreeField', () => {
 .#..#...#.#`;
             const field = TreeField.fromText(text);
 
-            expect(field.collisions(new Point(3, 1))).toBe(7);
-        })
+            const testCases = [{
+                slope: [1, 1],
+                result: 2,
+            }, {
+                slope: [3, 1],
+                result: 7,
+            }, {
+                slope: [5, 1],
+                result: 3,
+            }, {
+                slope: [7, 1],
+                result: 4,
+            }, {
+                slope: [1, 2],
+                result: 2,
+            }];
+
+            for (const testCase of testCases) {
+                expect(field.collisions(new Point(testCase.slope[0], testCase.slope[1]))).toBe(testCase.result);
+            }
+        });
     });
 });
