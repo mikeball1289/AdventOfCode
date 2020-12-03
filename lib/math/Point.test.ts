@@ -20,7 +20,7 @@ describe('Point', () => {
     describe('toString', () => {
         it('should generate a coordinate string representing the point', () => {
             const point = new Point(3, 4);
-            
+
             expect(point.toString()).toBe('(3, 4)');
         });
     });
@@ -28,7 +28,7 @@ describe('Point', () => {
     describe('equals', () => {
         it('should return true when comparing against a point at the same coords', () => {
             const p = new Point(Math.PI, Math.E);
-            
+
             expect(new Point().equals(new Point())).toBe(true);
             expect(new Point(5, 4).equals(new Point(5, 4))).toBe(true);
             expect(p.equals(p)).toBe(true);

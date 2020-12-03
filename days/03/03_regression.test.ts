@@ -20,5 +20,5 @@ describe('Day 3 - Toboggan Trajectory', () => {
 
         const result = slopes.map(slope => field.collisions(slope)).reduce((prev, curr) => prev * curr, 1);
         expect(result).toBe(3521829480);
-    })
+    });
 });

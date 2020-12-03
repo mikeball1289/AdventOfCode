@@ -17,8 +17,8 @@ export function parseLine(line: string): PasswordLine {
     if (reqParts.length !== 3) throw new Error(`"${line}" A requirement must contain a min, max, and character`);
     return {
         requirement: {
-            min: parseInt(reqParts[0]),
-            max: parseInt(reqParts[1]),
+            min: parseInt(reqParts[0], 10),
+            max: parseInt(reqParts[1], 10),
             char: reqParts[2],
         },
         password,

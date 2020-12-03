@@ -3,7 +3,7 @@ import { choose, range } from './settools';
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
         const result = choose([1, 2, 3], 4);
-        
+
         expect(result).toStrictEqual([]);
     });
 
