@@ -26,6 +26,7 @@ export function parseLine(line: string): PasswordLine {
 }
 
 export function passwordSatisfiesRequirement(password: string, requirement: PasswordRequirement) {
+    // the required character must appear between min and max times (inclusive) in the password string
     const repetitions = password.split(requirement.char).length - 1;
     return repetitions >= requirement.min && repetitions <= requirement.max;
 }

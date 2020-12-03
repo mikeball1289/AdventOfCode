@@ -1,4 +1,4 @@
-import { choose } from './settools';
+import { choose, range } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -48,5 +48,49 @@ describe('choose function', () => {
         const result = choose([1, 2, 3], 1.5);
 
         expect(result).toStrictEqual([[1, 2], [1, 3], [2, 3]]);
+    });
+});
+
+describe('range', () => {
+    it('should count from start (inclusive) to end (exclusive)', () => {
+        const result = range(5, 10);
+
+        expect(result).toStrictEqual([5, 6, 7, 8, 9]);
+    });
+
+    it('should return an empty range when start and end are the same', () => {
+        const result = range(3, 3);
+
+        expect(result).toStrictEqual([]);
+    });
+
+    it('should be able to count by non-1 increments', () => {
+        const result = range(1, 12, 3);
+
+        expect(result).toStrictEqual([1, 4, 7, 10]);
+    });
+
+    it('should be able to count by non-integer increments', () => {
+        const result = range(1, 5, 0.6);
+
+        expect(result).toStrictEqual([1, 1.6, 2.2, 2.8, 3.4, 4.0, 4.6]);
+    });
+
+    it('should be able to count backwards', () => {
+        const result = range(0, -10, -2);
+
+        expect(result).toStrictEqual([0, -2, -4, -6, -8]);
+    });
+
+    it('should throw an error when counting by 0s', () => {
+        const testFn = () => range(0, 10, 0);
+
+        expect(testFn).toThrowError();
+    });
+
+    it('should throw an error when end is not reachable from start', () => {
+        const testFn = () => range(10, 5);
+
+        expect(testFn).toThrowError();
     });
 });

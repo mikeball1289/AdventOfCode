@@ -13,3 +13,18 @@ export function choose<T>(set: T[], n: number) {
     if (set.length < n || n < 1) return [];
     return chooseUtil([], n, set);
 }
+
+/**
+ * Return an array of values which count from start to end (inclusive), by the given interval
+ * @param start The number to start counting from
+ * @param end The number to start when the count is about to reach
+ * @param by The step size (default: 1)
+ */
+export function range(start: number, end: number, by = 1) {
+    const rangeLength = Math.ceil((end - start) / by);
+    if (!isFinite(rangeLength) || isNaN(rangeLength) || rangeLength < 0) {
+        throw new Error(`Cannot count to ${end} from ${start} by ${by}s`);
+    }
+
+    return new Array(rangeLength).fill(0).map((_, i) => start + by * i);
+}

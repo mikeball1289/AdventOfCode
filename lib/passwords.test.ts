@@ -2,19 +2,19 @@ import { parseLine, PasswordLine, PasswordRequirement, passwordSatisfiesRequirem
 
 describe('parseLine', () => {
     it('should throw an error if the password is missing', () => {
-        expect(() => parseLine('1-3 a')).toThrow(new Error('"1-3 a" Each line must consist of exactly one requirement and one password'));
+        expect(() => parseLine('1-3 a')).toThrowError();
     });
 
     it('should throw an error if the requirement is missing', () => {
-        expect(() => parseLine('abcabc')).toThrow(new Error('"abcabc" Each line must consist of exactly one requirement and one password'));
+        expect(() => parseLine('abcabc')).toThrowError();
     });
 
     it('should throw an error if too many parts are given', () => {
-        expect(() => parseLine('1-3 a: abcabc: defdef')).toThrow(new Error('"1-3 a: abcabc: defdef" Each line must consist of exactly one requirement and one password'));
+        expect(() => parseLine('1-3 a: abcabc: defdef')).toThrowError();
     });
 
     it('should throw an error if the requirement is improperly formatted', () => {
-        expect(() => parseLine('abcabc: abcabc')).toThrow(new Error('"abcabc: abcabc" A requirement must contain a min, max, and character'));
+        expect(() => parseLine('abcabc: abcabc')).toThrowError();
     });
 
     it('should parse password text lines', () => {

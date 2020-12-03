@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { choose } from '../lib/settools';
+import { choose } from '../lib/math/settools';
 
 describe('Day 1 - Report Repair', () => {
     test('Part 1 solves', () => {
