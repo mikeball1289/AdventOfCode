@@ -192,54 +192,54 @@ describe('Passport', () => {
 describe('fieldValidators', () => {
     describe('birth year', () => {
         it('should pass valid input', () => {
-            expect(fieldValidators.byr('2002')).toBe(true);
+            expect(fieldValidators[PassportFieldLabel.BIRTH_YEAR]('2002')).toBe(true);
         });
 
         it('should fail invalid input', () => {
-            expect(fieldValidators.byr('2003')).toBe(false);
+            expect(fieldValidators[PassportFieldLabel.BIRTH_YEAR]('2003')).toBe(false);
         });
     });
 
     describe('height', () => {
         it('should pass valid input', () => {
-            expect(fieldValidators.hgt('60in')).toBe(true);
-            expect(fieldValidators.hgt('190cm')).toBe(true);
+            expect(fieldValidators[PassportFieldLabel.HEIGHT]('60in')).toBe(true);
+            expect(fieldValidators[PassportFieldLabel.HEIGHT]('190cm')).toBe(true);
         });
 
         it('should fail invalid input', () => {
-            expect(fieldValidators.hgt('190in')).toBe(false);
-            expect(fieldValidators.hgt('190')).toBe(false);
+            expect(fieldValidators[PassportFieldLabel.HEIGHT]('190in')).toBe(false);
+            expect(fieldValidators[PassportFieldLabel.HEIGHT]('190')).toBe(false);
         });
     });
 
     describe('hair color', () => {
         it('should pass valid input', () => {
-            expect(fieldValidators.hcl('#123abc')).toBe(true);
+            expect(fieldValidators[PassportFieldLabel.HAIR_COLOR]('#123abc')).toBe(true);
         });
 
         it('should fail invalid input', () => {
-            expect(fieldValidators.hcl('#123abz')).toBe(false);
-            expect(fieldValidators.hcl('123abc')).toBe(false);
+            expect(fieldValidators[PassportFieldLabel.HAIR_COLOR]('#123abz')).toBe(false);
+            expect(fieldValidators[PassportFieldLabel.HAIR_COLOR]('123abc')).toBe(false);
         });
     });
 
     describe('eye color', () => {
         it('should pass valid input', () => {
-            expect(fieldValidators.ecl('brn')).toBe(true);
+            expect(fieldValidators[PassportFieldLabel.EYE_COLOR]('brn')).toBe(true);
         });
 
         it('should fail invalid input', () => {
-            expect(fieldValidators.ecl('wat')).toBe(false);
+            expect(fieldValidators[PassportFieldLabel.EYE_COLOR]('wat')).toBe(false);
         });
     });
 
     describe('password id', () => {
         it('should pass valid input', () => {
-            expect(fieldValidators.pid('000000001')).toBe(true);
+            expect(fieldValidators[PassportFieldLabel.PASSPORT_ID]('000000001')).toBe(true);
         });
 
         it('should fail invalid input', () => {
-            expect(fieldValidators.pid('0123456789')).toBe(false);
+            expect(fieldValidators[PassportFieldLabel.PASSPORT_ID]('0123456789')).toBe(false);
         });
     });
 });

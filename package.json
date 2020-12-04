@@ -5,7 +5,8 @@
   "scripts": {
     "build": "tsc -p .",
     "clean": "rimraf bin",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --collectCoverage"
   },
   "repository": {
     "type": "git",
