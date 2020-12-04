@@ -19,6 +19,7 @@ describe('TreeField', () => {
 
         it('should be fine with no trees', () => {
             const field = new TreeField(0, 0, []);
+
             expect(field).toBeDefined();
         });
     });
@@ -48,17 +49,17 @@ describe('TreeField', () => {
     describe('collisions', () => {
         it('should count the number of trees that exist along a given trajectory', () => {
             const text =
-`..##.......
-#...#...#..
-.#....#..#.
-..#.#...#.#
-.#...##..#.
-..#.##.....
-.#.#.#....#
-.#........#
-#.##...#...
-#...##....#
-.#..#...#.#`;
+                '..##.......\n' +
+                '#...#...#..\n' +
+                '.#....#..#.\n' +
+                '..#.#...#.#\n' +
+                '.#...##..#.\n' +
+                '..#.##.....\n' +
+                '.#.#.#....#\n' +
+                '.#........#\n' +
+                '#.##...#...\n' +
+                '#...##....#\n' +
+                '.#..#...#.#\n';
             const field = TreeField.fromText(text);
 
             const testCases = [{

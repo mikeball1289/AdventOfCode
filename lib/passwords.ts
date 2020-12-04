@@ -10,16 +10,19 @@ export interface PasswordLine {
 }
 
 export function parseLine(line: string): PasswordLine {
-    const parts = line.split(': ');
-    if (parts.length !== 2) throw new Error(`"${line}" Each line must consist of exactly one requirement and one password`);
-    const [req, password] = parts;
-    const reqParts = req.split(/[ \-]/);
-    if (reqParts.length !== 3) throw new Error(`"${line}" A requirement must contain a min, max, and character`);
+    const passwordLineMatcher = /^(\d+)-(\d+) (\w): (\w+)$/;
+    const match = line.match(passwordLineMatcher);
+    if (!match) {
+        throw new Error(`"${line}" Each line must consist of exactly one requirement and one password`);
+    }
+
+    const [, min, max, char, password] = match;
+
     return {
         requirement: {
-            min: parseInt(reqParts[0], 10),
-            max: parseInt(reqParts[1], 10),
-            char: reqParts[2],
+            min: parseInt(min, 10),
+            max: parseInt(max, 10),
+            char,
         },
         password,
     };

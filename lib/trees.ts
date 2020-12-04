@@ -9,7 +9,7 @@ export class TreeField {
     ) {
         const oobTree = trees.find(t => t.x < 0 || t.x >= width || t.y < 0 || t.y >= height);
         if (oobTree) {
-            throw new RangeError(`Tree (${oobTree.x}, ${oobTree.y}) is outside bounds ${width} x ${height}`);
+            throw new RangeError(`Tree ${oobTree.toString()} is outside bounds ${width} x ${height}`);
         }
     }
 
@@ -32,6 +32,8 @@ export class TreeField {
     }
 
     collisions(trajectory: Point): number {
+        // generate the steps that exist along the given trajectory
+        // first get the vertical steps, then compute the related horizontal step
         const steps = range(0, this.height, trajectory.y)
             .map((y, i) => new Point((i * trajectory.x) % this.width, y));
 
