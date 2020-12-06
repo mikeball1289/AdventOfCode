@@ -35,3 +35,20 @@ export function range(start: number, end: number, by = 1) {
 export function uniq<T>(set: T[]) {
     return set.filter((e, i) => set.indexOf(e) === i);
 }
+
+/**
+ * Returns the unique intersection of two sets, e.g [1, 1, 2, 3] intersect [1, 1, 2, 2] becomes [1, 2]
+ */
+export function intersect<T>(setA: T[], setB: T[]) {
+    return uniq(setA).filter(e => setB.includes(e));
+}
+
+/**
+ * Computes the reduction of a set over some operation f
+ * e.g the set [1, 2, 3] with the operator `+` reduces to 6
+ */
+export function reduction<T>(set: T[], f: (a: T, b: T) => T): T {
+    if (set.length < 1) throw new Error('Cannot reduce empty set');
+    const [head, ...tail] = set;
+    return tail.reduce(f, head);
+}

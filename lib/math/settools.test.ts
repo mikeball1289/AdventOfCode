@@ -1,4 +1,4 @@
-import { choose, range, uniq } from './settools';
+import { choose, intersect, range, reduction, uniq } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -153,5 +153,91 @@ describe('uniq', () => {
             .map(uniq);
 
         expect(results.map(r => r.length)).toStrictEqual([3, 3, 3, 1, 1]);
+    });
+});
+
+describe('intersect', () => {
+    it('should return an empty set if either input is empty', () => {
+        expect(intersect([], [1, 2, 3])).toStrictEqual([]);
+    });
+
+    it('should return the list of common elements between two sets', () => {
+        const testCases: [number[], number[]][] = [
+            [[1, 2, 3], [1, 2]],
+            [[4, 5, 6], [4, 5, 6]],
+            [[5], [1, 2, 3, 4, 5, 6, 7, 8, 9]],
+        ];
+
+        const expectedResults = [
+            [1, 2],
+            [4, 5, 6],
+            [5]
+        ];
+
+        const results = testCases.map(([a, b]) => intersect(a, b));
+        expect(results).toStrictEqual(expectedResults);
+    });
+
+    it('should return the empty set if there are no common elements', () => {
+        expect(intersect([1, 2, 3], [4, 5, 6])).toStrictEqual([]);
+    });
+
+    it('should not consider duplicates when finding the intersection', () => {
+        const result = intersect([1, 1, 1, 2, 2, 3], [1, 1, 2]);
+
+        expect(result).toStrictEqual([1, 2]);
+    });
+
+    it('should pass the given test cases', () => {
+        const testCases =
+            'abc\n' +
+            '\n' +
+            'a\n' +
+            'b\n' +
+            'c\n' +
+            '\n' +
+            'ab\n' +
+            'ac\n' +
+            '\n' +
+            'a\n' +
+            'a\n' +
+            'a\n' +
+            'a\n' +
+            '\n' +
+            'b\n';
+
+        const testSets = testCases
+            .split('\n\n')
+            .map(testCase => testCase
+                .split('\n')
+                .filter(l => l !== '')
+                .map(l => l.split(''))
+            );
+
+        const results = testSets.map(s => reduction(s, intersect));
+
+        expect(results.map(r => r.length)).toStrictEqual([3, 0, 1, 1, 1]);
+    });
+});
+
+describe('reduction', () => {
+    const add = (a: number, b: number) => a + b;
+
+    it('should throw an error when given the empty set', () => {
+        const testFn = () => reduction([], add);
+
+        expect(testFn).toThrowError();
+    });
+
+    it('should compute the reduction of the given set', () => {
+        const result = reduction([1, 2, 3], add);
+
+        expect(result).toBe(6);
+    });
+
+    it('should return the only element without calling the reducer when given a single-element set', () => {
+        const result = reduction([3], (a, b) => 0);
+
+        expect(result).toBe(3);
     });
 });
