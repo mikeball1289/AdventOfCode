@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { parseBoardingPass } from '../../lib/boarding-passes';
 
-const input = readFileSync('./input/day5input.txt', 'ascii');
+const input = readFileSync('./input/day5input.txt', 'ascii').replace(/\r\n/g, '\n');
 const passTexts = input.split('\n').filter(l => l !== '');
 const boardingPasses = passTexts.map(t => parseBoardingPass(t));
 

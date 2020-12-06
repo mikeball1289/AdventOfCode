@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { uniq } from '../../lib/math/settools';
 
-const input = readFileSync('./input/day6input.txt', 'ascii');
+const input = readFileSync('./input/day6input.txt', 'ascii').replace(/\r\n/g, '\n');
 
 const forms = input.split('\n\n').filter(f => f !== '');
 

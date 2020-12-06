@@ -3,7 +3,7 @@ import { parseLine, passwordSatisfiesRequirement, passwordSatisfiesTobogganRequi
 
 describe('Day 2 - Password Philosophy', () => {
     test('Part 1 solves', () => {
-        const input = readFileSync('./input/day2input.txt', 'ascii');
+        const input = readFileSync('./input/day2input.txt', 'ascii').replace(/\r\n/g, '\n');
         const lines = input.split('\n').filter(s => s !== ''); // trim blank lines
 
         const passwordLines = lines.map(parseLine);
@@ -13,7 +13,7 @@ describe('Day 2 - Password Philosophy', () => {
     });
 
     test('Part 2 solves', () => {
-        const input = readFileSync('./input/day2input.txt', 'ascii');
+        const input = readFileSync('./input/day2input.txt', 'ascii').replace(/\r\n/g, '\n');
         const lines = input.split('\n').filter(s => s !== ''); // trim blank lines
 
         const passwordLines = lines.map(parseLine);

@@ -3,7 +3,7 @@ import { parseBoardingPass } from '../../lib/boarding-passes';
 
 describe('Day 4 - Passport Processing', () => {
     test('Part 1 solves', () => {
-        const input = readFileSync('./input/day5input.txt', 'ascii');
+        const input = readFileSync('./input/day5input.txt', 'ascii').replace(/\r\n/g, '\n');
         const passTexts = input.split('\n').filter(l => l !== '');
         const boardingPasses = passTexts.map(t => parseBoardingPass(t));
 
@@ -14,7 +14,7 @@ describe('Day 4 - Passport Processing', () => {
     });
 
     test('Part 2 solves', () => {
-        const input = readFileSync('./input/day5input.txt', 'ascii');
+        const input = readFileSync('./input/day5input.txt', 'ascii').replace(/\r\n/g, '\n');
         const passTexts = input.split('\n').filter(l => l !== '');
         const boardingPasses = passTexts.map(t => parseBoardingPass(t));
 

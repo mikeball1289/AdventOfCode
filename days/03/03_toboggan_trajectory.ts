@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { Point } from '../../lib/math/Point';
 import { TreeField } from '../../lib/trees';
 
-const input = readFileSync('./input/day3input.txt', 'ascii');
+const input = readFileSync('./input/day3input.txt', 'ascii').replace(/\r\n/g, '\n');
 
 const field = TreeField.fromText(input);
 const collisions = field.collisions(new Point(3, 1));

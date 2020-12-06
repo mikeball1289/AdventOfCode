@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { Passport, PassportFieldLabel, validFieldLabels } from '../../lib/Passport';
 
-const input = readFileSync('./input/day4input.txt', 'ascii');
+const input = readFileSync('./input/day4input.txt', 'ascii').replace(/\r\n/g, '\n');
 
 const passports = input.split('\n\n').map(line => Passport.fromText(line));
 // we expect to see all fields except country id
