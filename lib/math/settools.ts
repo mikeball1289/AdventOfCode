@@ -28,3 +28,10 @@ export function range(start: number, end: number, by = 1) {
 
     return new Array(rangeLength).fill(0).map((_, i) => start + by * i);
 }
+
+/**
+ * Removes duplicate elements from a list, e.g [1, 1, 2, 2, 3, 1] becomes [1, 2, 3]
+ */
+export function uniq<T>(set: T[]) {
+    return set.filter((e, i) => set.indexOf(e) === i);
+}

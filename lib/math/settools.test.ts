@@ -1,4 +1,4 @@
-import { choose, range } from './settools';
+import { choose, range, uniq } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -92,5 +92,66 @@ describe('range', () => {
         const testFn = () => range(10, 5);
 
         expect(testFn).toThrowError();
+    });
+});
+
+describe('uniq', () => {
+    it('should remove duplicate elements from the given list', () => {
+        const result = uniq([1, 1, 2, 2, 3, 1]);
+
+        expect(result).toStrictEqual([1, 2, 3]);
+    });
+
+    it('should do nothing if the list contains no duplicates', () => {
+        const testCases = [[1, 2, 3], []];
+
+        const results = testCases.map(uniq);
+
+        expect(results).toStrictEqual(testCases);
+    });
+
+    it('should compare objects in the list by reference', () => {
+        const testObj = { a: 1, b: 'foo' };
+        const result = uniq([testObj, { a: 1, b: 'foo' }, testObj]);
+
+        expect(result).toStrictEqual([{ a: 1, b: 'foo' }, { a: 1, b: 'foo' }]);
+    });
+
+    it('should pass the simple example case', () => {
+        const example =
+            'abcx\n' +
+            'abcy\n' +
+            'abcz\n';
+
+        const answers = example.split('\n').join('').split('');
+        const uniqueAnswers = uniq(answers);
+
+        expect(uniqueAnswers.length).toBe(6);
+    });
+
+    it('should pass the given test cases', () => {
+        const testCases =
+            'abc\n' +
+            '\n' +
+            'a\n' +
+            'b\n' +
+            'c\n' +
+            '\n' +
+            'ab\n' +
+            'ac\n' +
+            '\n' +
+            'a\n' +
+            'a\n' +
+            'a\n' +
+            'a\n' +
+            '\n' +
+            'b\n';
+
+        const results = testCases
+            .split('\n\n')
+            .map(test => test.split('\n').join('').split(''))
+            .map(uniq);
+
+        expect(results.map(r => r.length)).toStrictEqual([3, 3, 3, 1, 1]);
     });
 });
