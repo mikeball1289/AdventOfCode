@@ -6,7 +6,10 @@
     "build": "tsc -p .",
     "clean": "rimraf bin",
     "test": "jest",
-    "test:coverage": "jest --collectCoverage"
+    "test:coverage": "jest --collectCoverage",
+    "cloc": "cloc days lib --by-file",
+    "cloc:app": "cloc days lib --by-file --not-match-f=\"\\.test\\.ts$\"",
+    "cloc:tests": "cloc days lib --by-file --match-f=\"\\.test\\.ts$\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",
+    "cloc": "^2.7.0",
     "jest": "^26.6.3",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.4",
