@@ -1,9 +1,9 @@
-import { readFileSync } from 'fs';
 import { BagRuleSet } from '../../lib/BagRuleSet';
+import { openAoC } from '../../lib/input/openAoC';
 
 describe('Day 7 - Handy Haversacks', () => {
     test('Part 1 solves', () => {
-        const input = readFileSync('./input/day7input.txt', 'ascii').replace(/\r\n/g, '\n');
+        const input = openAoC('./input/day7input.txt');
         const ruleSet = BagRuleSet.fromText(input);
         const canContainShinyGold = ruleSet.ancestorsOf('shiny gold');
 
@@ -11,7 +11,7 @@ describe('Day 7 - Handy Haversacks', () => {
     });
 
     test('Part 2 solves', () => {
-        const input = readFileSync('./input/day7input.txt', 'ascii').replace(/\r\n/g, '\n');
+        const input = openAoC('./input/day7input.txt');
         const ruleSet = BagRuleSet.fromText(input);
         const totalBagsForShinyGold = ruleSet.totalBagsForColor('shiny gold');
 

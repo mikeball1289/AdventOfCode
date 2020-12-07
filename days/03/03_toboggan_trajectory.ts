@@ -1,8 +1,9 @@
 import { readFileSync } from 'fs';
+import { openAoC } from '../../lib/input/openAoC';
 import { Point } from '../../lib/math/Point';
 import { TreeField } from '../../lib/trees';
 
-const input = readFileSync('./input/day3input.txt', 'ascii').replace(/\r\n/g, '\n');
+const input = openAoC('./input/day3input.txt');
 
 const field = TreeField.fromText(input);
 const collisions = field.collisions(new Point(3, 1));

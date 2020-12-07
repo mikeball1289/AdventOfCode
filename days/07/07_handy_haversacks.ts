@@ -1,7 +1,7 @@
-import { readFileSync } from 'fs';
 import { BagRuleSet } from '../../lib/BagRuleSet';
+import { openAoC } from '../../lib/input/openAoC';
 
-const input = readFileSync('./input/day7input.txt', 'ascii').replace(/\r\n/g, '\n');
+const input = openAoC('./input/day7input.txt');
 const ruleSet = BagRuleSet.fromText(input);
 const canContainShinyGold = ruleSet.ancestorsOf('shiny gold');
 

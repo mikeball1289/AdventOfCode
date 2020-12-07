@@ -1,8 +1,7 @@
-import { readFileSync } from 'fs';
+import { openAoC } from '../../lib/input/openAoC';
 import { parseLine, passwordSatisfiesRequirement, passwordSatisfiesTobogganRequirement } from '../../lib/passwords';
 
-const input = readFileSync('./input/day2input.txt', 'ascii').replace(/\r\n/g, '\n');
-const lines = input.split('\n').filter(s => s !== ''); // trim blank lines
+const lines = openAoC('./input/day2input.txt', ['\n']);
 
 const passwordLines = lines.map(parseLine);
 const validPasswords = passwordLines.filter(pl => passwordSatisfiesRequirement(pl.password, pl.requirement));

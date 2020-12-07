@@ -1,11 +1,11 @@
-import { readFileSync } from 'fs';
+import { openAoC } from '../../lib/input/openAoC';
 import { Passport, PassportFieldLabel, validFieldLabels } from '../../lib/Passport';
 
 describe('Day 4 - Passport Processing', () => {
     test('Part 1 solves', () => {
-        const input = readFileSync('./input/day4input.txt', 'ascii').replace(/\r\n/g, '\n');
+        const input = openAoC('./input/day4input.txt', ['\n\n']);
 
-        const passports = input.split('\n\n').map(line => Passport.fromText(line));
+        const passports = input.map(line => Passport.fromText(line));
         // we expect to see all fields except country id
         const requiredFields = validFieldLabels.filter(f => f !== PassportFieldLabel.COUNTRY_ID);
 
@@ -15,9 +15,9 @@ describe('Day 4 - Passport Processing', () => {
     });
 
     test('Part 2 solves', () => {
-        const input = readFileSync('./input/day4input.txt', 'ascii').replace(/\r\n/g, '\n');
+        const input = openAoC('./input/day4input.txt', ['\n\n']);
 
-        const passports = input.split('\n\n').map(line => Passport.fromText(line));
+        const passports = input.map(line => Passport.fromText(line));
         // we expect to see all fields except country id
         const requiredFields = validFieldLabels.filter(f => f !== PassportFieldLabel.COUNTRY_ID);
 

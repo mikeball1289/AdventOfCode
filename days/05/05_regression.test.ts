@@ -1,11 +1,10 @@
-import { readFileSync } from 'fs';
 import { parseBoardingPass } from '../../lib/boarding-passes';
+import { openAoC } from '../../lib/input/openAoC';
 
 describe('Day 4 - Passport Processing', () => {
     test('Part 1 solves', () => {
-        const input = readFileSync('./input/day5input.txt', 'ascii').replace(/\r\n/g, '\n');
-        const passTexts = input.split('\n').filter(l => l !== '');
-        const boardingPasses = passTexts.map(t => parseBoardingPass(t));
+        const input = openAoC('./input/day5input.txt', ['\n']);
+        const boardingPasses = input.map(t => parseBoardingPass(t));
 
         const seats = boardingPasses.map(pass => pass.seat);
         const maxSeat = Math.max(...seats);
@@ -14,9 +13,8 @@ describe('Day 4 - Passport Processing', () => {
     });
 
     test('Part 2 solves', () => {
-        const input = readFileSync('./input/day5input.txt', 'ascii').replace(/\r\n/g, '\n');
-        const passTexts = input.split('\n').filter(l => l !== '');
-        const boardingPasses = passTexts.map(t => parseBoardingPass(t));
+        const input = openAoC('./input/day5input.txt', ['\n']);
+        const boardingPasses = input.map(t => parseBoardingPass(t));
 
         const seats = boardingPasses.map(pass => pass.seat);
         const sortedSeats = seats.slice().sort((a, b) => a - b);

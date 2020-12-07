@@ -1,10 +1,10 @@
-import { readFileSync } from 'fs';
+import { openAoC } from '../../lib/input/openAoC';
 import { Point } from '../../lib/math/Point';
 import { TreeField } from '../../lib/trees';
 
 describe('Day 3 - Toboggan Trajectory', () => {
     test('Part 1 solves', () => {
-        const input = readFileSync('./input/day3input.txt', 'ascii').replace(/\r\n/g, '\n');
+        const input = openAoC('./input/day3input.txt');
 
         const field = TreeField.fromText(input);
         const collisions = field.collisions(new Point(3, 1));
@@ -13,7 +13,7 @@ describe('Day 3 - Toboggan Trajectory', () => {
     });
 
     test('Part 2 solves', () => {
-        const input = readFileSync('./input/day3input.txt', 'ascii').replace(/\r\n/g, '\n');
+        const input = openAoC('./input/day3input.txt');
 
         const field = TreeField.fromText(input);
         const slopes = [[1, 1], [3, 1], [5, 1], [7, 1], [1, 2]].map(([x, y]) => new Point(x, y));

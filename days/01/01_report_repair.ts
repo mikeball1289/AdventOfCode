@@ -1,8 +1,8 @@
-import { readFileSync } from 'fs';
+import { openAoC } from '../../lib/input/openAoC';
 import { choose } from '../../lib/math/settools';
 
-const input = readFileSync('./input/day1input.txt', 'ascii').replace(/\r\n/g, '\n');
-const numbers = input.split('\n').map(n => parseInt(n, 10));
+const input = openAoC('./input/day1input.txt', ['\n']);
+const numbers = input.map(n => parseInt(n, 10));
 
 const relevantPairs = choose(numbers, 2).filter(([a, b]) => a + b === 2020);
 console.log(relevantPairs.map(([a, b]) => a * b)); // [1016619]

@@ -1,19 +1,11 @@
-import { readFileSync } from 'fs';
+import { openAoC } from '../../lib/input/openAoC';
 import { intersect, reduction, uniq } from '../../lib/math/settools';
 
 describe('Day 6 - Custom Customs', () => {
-    const input = readFileSync('./input/day6input.txt', 'ascii').replace(/\r\n/g, '\n');
-
-    const forms = input.split('\n\n').filter(f => f !== '');
-
-    const answers = forms
-        .map(testCase => testCase
-            .split('\n')
-            .filter(l => l !== '')
-            .map(l => l.split(''))
-        );
 
     test('Part 1 solves', () => {
+        const answers = openAoC('./input/day6input.txt', ['\n\n', '\n', '']);
+
         // get the counts of unique answers in each form
         const uniqueAnswers = answers
             .map(answerForm => uniq(answerForm.flat()))
@@ -24,6 +16,8 @@ describe('Day 6 - Custom Customs', () => {
     });
 
     test('Part 2 solves', () => {
+        const answers = openAoC('./input/day6input.txt', ['\n\n', '\n', '']);
+
         // get the counts of common answers in each form
         const commonAnswers = answers
             .map(answerForm => reduction(answerForm, intersect))
