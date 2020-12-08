@@ -14,4 +14,4 @@ After downloading the repository navigate to the root folder and run `npm i` to 
 
 There's a VSCode launch.json file included which will allow you to debug your currently open file in VSCode by pressing F5.
 
-Unit testing is done in Jest. Test files end with `.test.ts` and live beside the module they're testing. `npm test` will run the unit tests.
+Unit testing is done in Jest. Test files end with `.test.ts` and live beside the module they're testing. `npm test` will run the unit tests. `npm test days` will only run the regression tests which confirm that my solutions for each day still compute the correct values. `npm run test:coverage` will generate a coverage report, which should show 100% library code coverage.
