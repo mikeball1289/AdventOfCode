@@ -1,5 +1,5 @@
 import { Point } from './math/Point';
-import { TreeField } from './trees';
+import { TreeField } from './TreeField';
 
 describe('TreeField', () => {
     describe('constructor', () => {

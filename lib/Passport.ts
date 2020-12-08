@@ -1,5 +1,3 @@
-import { inspect } from 'util';
-
 export enum PassportFieldLabel {
     BIRTH_YEAR = 'byr',
     ISSUE_YEAR = 'iyr',

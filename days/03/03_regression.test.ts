@@ -1,6 +1,6 @@
 import { openAoC } from '../../lib/input/openAoC';
 import { Point } from '../../lib/math/Point';
-import { TreeField } from '../../lib/trees';
+import { TreeField } from '../../lib/TreeField';
 
 describe('Day 3 - Toboggan Trajectory', () => {
     test('Part 1 solves', () => {

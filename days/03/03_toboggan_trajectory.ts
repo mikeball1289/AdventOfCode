@@ -1,7 +1,6 @@
-import { readFileSync } from 'fs';
 import { openAoC } from '../../lib/input/openAoC';
 import { Point } from '../../lib/math/Point';
-import { TreeField } from '../../lib/trees';
+import { TreeField } from '../../lib/TreeField';
 
 const input = openAoC('./input/day3input.txt');
 
