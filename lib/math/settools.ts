@@ -52,3 +52,11 @@ export function reduction<T>(set: T[], f: (a: T, b: T) => T): T {
     const [head, ...tail] = set;
     return tail.reduce(f, head);
 }
+
+export function sum(list: number[]) {
+    return list.reduce((a, b) => a + b, 0);
+}
+
+export function prod(list: number[]) {
+    return list.reduce((a, b) => a * b, 1);
+}

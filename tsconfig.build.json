@@ -3,6 +3,6 @@
   "compilerOptions": {
     "noEmit": false,
   },
-  "include": ["./days/**/*.ts", "./lib/**/*.ts"],
+  "include": ["./**/days/**/*.ts", "./**/lib/**/*.ts"],
   "exclude": ["./**/*.test.ts"]
 }

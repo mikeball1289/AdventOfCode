@@ -1,4 +1,4 @@
-import { choose, intersect, range, reduction, uniq } from './settools';
+import { choose, intersect, prod, range, reduction, sum, uniq } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -239,5 +239,29 @@ describe('reduction', () => {
         const result = reduction([3], (a, b) => 0);
 
         expect(result).toBe(3);
+    });
+});
+
+describe('sum', () => {
+    it('should compute the sum of a list of numbers', () => {
+        const result = sum([1, 2, 3]);
+
+        expect(result).toBe(6);
+    });
+
+    it('should return 0 when the list is empty', () => {
+        expect(sum([])).toBe(0);
+    });
+});
+
+describe('prod', () => {
+    it('should return the product of a list of numbers', () => {
+        const result = prod([1, 2, 3, 4]);
+
+        expect(result).toBe(24);
+    });
+
+    it('should return 1 when the list is empty', () => {
+        expect(prod([])).toBe(1);
     });
 });
