@@ -61,9 +61,32 @@ export function prod(list: number[]) {
     return list.reduce((a, b) => a * b, 1);
 }
 
+export function eq(list: any[]) {
+    return list.length === 0 || !list.slice(1).some(el => el !== list[0]);
+}
+
 /**
  * Pairs each element in list1 with each element in list2
  */
 export function cross<A, B>(list1: A[], list2: B[]): [A, B][] {
     return list1.flatMap(el1 => list2.map(el2 => [el1, el2] as [A, B]));
+}
+
+export function zip<A, B>(list1: A[], list2: B[]): [A, B][] {
+    return list1.slice(0, Math.min(list1.length, list2.length)).map((el, i) => [el, list2[i]]);
+}
+
+/**
+ * Groups blocks of continuous identical elements
+ * e.g ['a', 'a', 'b', 'b', 'b', 'a', 'a'] -> [{ el: 'a', len: 2 }, { el: 'b', len: 3 }, { el: 'a', len: 2 }]
+ */
+export function blocks<T>(list: T[]): { el: T, len: number }[] {
+    function groupInto(set: { el: T, len: number }[], item: T): { el: T, len: number }[] {
+        if (set.length === 0) return [{ el: item, len: 1 }];
+        const lastBlock = set.slice(-1)[0];
+        if (item !== lastBlock.el) return [...set, { el: item, len: 1 }];
+        return [...set.slice(0, -1), { el: item, len: lastBlock.len + 1 }];
+    }
+
+    return list.reduce((sets: { el: T, len: number }[], item) => groupInto(sets, item), []);
 }

@@ -26,3 +26,10 @@ export function maybeDo<T, R>(fn: (...args: T[]) => R, ...rest: Maybe<T>[]): May
     if (rest.includes(undefined)) return undefined;
     return fn(...(rest as T[]));
 }
+
+/**
+ * Turns a list of predicate functions into a single function which decides if all the predicates are satisfied
+ */
+export function sat<T>(preds: ((input: T) => boolean)[]): (input: T) => boolean {
+    return input => preds.reduce((sats: boolean, fn) => sats && fn(input), true);
+}

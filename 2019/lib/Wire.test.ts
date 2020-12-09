@@ -1,4 +1,4 @@
-import { isSome, maybeDo } from '../../lib/math/funcs';
+import { isSome, maybeDo } from '../../lib/funcs';
 import { Point } from '../../lib/math/Point';
 import { cross } from '../../lib/math/settools';
 import { distanceAlongPath, parseWiresFromPath, Wire, WireDirection } from './Wire';

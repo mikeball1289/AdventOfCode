@@ -1,4 +1,4 @@
-import { converge, maybeDo } from './funcs';
+import { converge, maybeDo, sat } from './funcs';
 
 describe('converge', () => {
     it('should throw an error if the function never converges', () => {
@@ -34,5 +34,18 @@ describe('maybeDo', () => {
         const result = maybeDo(add, undefined, 1);
 
         expect(result).toBeUndefined();
+    });
+});
+
+describe('sat', () => {
+    it('should generate a function that checks a list of conditions on an input', () => {
+        const checker = sat<number>([
+            n => n % 2 === 0,
+            n => n % 3 === 0,
+            () => true
+        ]);
+
+        expect(checker(6)).toBe(true);
+        expect(checker(5)).toBe(false);
     });
 });

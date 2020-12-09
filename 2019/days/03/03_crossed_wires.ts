@@ -1,5 +1,5 @@
 import { openAoC } from '../../../lib/input/openAoC';
-import { isSome, maybeDo } from '../../../lib/math/funcs';
+import { isSome, maybeDo } from '../../../lib/funcs';
 import { cross } from '../../../lib/math/settools';
 import { distanceAlongPath, parseWiresFromPath } from '../../lib/Wire';
 

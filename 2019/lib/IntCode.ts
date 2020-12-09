@@ -1,4 +1,4 @@
-import { converge } from '../../lib/math/funcs';
+import { converge } from '../../lib/funcs';
 
 export interface CPU {
     pc: number;

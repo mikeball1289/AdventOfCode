@@ -1,5 +1,5 @@
 import { openAoC } from '../../../lib/input/openAoC';
-import { converge } from '../../../lib/math/funcs';
+import { converge } from '../../../lib/funcs';
 import { sum } from '../../../lib/math/settools';
 
 describe('Day 1 - The Tyranny of the Rocket Equation', () => {

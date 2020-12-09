@@ -6,10 +6,11 @@
     "build": "tsc -p .",
     "clean": "rimraf bin",
     "test": "jest",
-    "test:coverage": "jest --collectCoverage",
+    "test:coverage": "jest --collectCoverage lib",
     "cloc": "cloc days lib --by-file",
     "cloc:app": "cloc days lib --by-file --not-match-f=\"\\.test\\.ts$\"",
-    "cloc:tests": "cloc days lib --by-file --match-f=\"\\.test\\.ts$\""
+    "cloc:tests": "cloc days lib --by-file --match-f=\"\\.test\\.ts$\"",
+    "lint": "tslint --project ."
   },
   "repository": {
     "type": "git",

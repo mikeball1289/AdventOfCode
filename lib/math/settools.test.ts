@@ -1,4 +1,4 @@
-import { choose, cross, intersect, prod, range, reduction, sum, uniq } from './settools';
+import { blocks, choose, cross, eq, intersect, prod, range, reduction, sum, uniq, zip } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -266,6 +266,23 @@ describe('prod', () => {
     });
 });
 
+describe('eq', () => {
+    it('should return true if all elements in the list are the same', () => {
+        expect(eq([1, 1, 1])).toBe(true);
+    });
+
+    it('should return true if the list is empty or contains only one element', () => {
+        expect(eq([])).toBe(true);
+        expect(eq([1])).toBe(true);
+    });
+
+    it('should return false if any of the elements in the list are unique', () => {
+        expect(eq([1, 1, 2])).toBe(false);
+        expect(eq([1, 2, 3])).toBe(false);
+        expect(eq([1, 2, 1, 2])).toBe(false);
+    });
+});
+
 describe('cross', () => {
     it('should pair each element in the first list with each element in the second list', () => {
         const list1 = [1, 2, 3];
@@ -277,5 +294,26 @@ describe('cross', () => {
     it('should be empty if either input list is empty', () => {
         expect(cross([1, 2, 3], [])).toStrictEqual([]);
         expect(cross([], [1, 2, 3])).toStrictEqual([]);
+    });
+});
+
+describe('zip', () => {
+    it('should pair the elements of two lists one-to-one', () => {
+        const result = zip([1, 2, 3], [4, 5, 6]);
+
+        expect(result).toStrictEqual([[1, 4], [2, 5], [3, 6]]);
+    });
+
+    it('should truncate the longer list to the length of the shorter one', () => {
+        expect(zip([1, 2, 3], [4, 5, 6, 7, 8])).toStrictEqual([[1, 4], [2, 5], [3, 6]]);
+        expect(zip([1, 2, 3, 4, 5], [6, 7, 8])).toStrictEqual([[1, 6], [2, 7], [3, 8]]);
+    });
+});
+
+describe('blocks', () => {
+    it('should split an array into blocks of continuous identical elements', () => {
+        const result = blocks('aabbbaa'.split(''));
+
+        expect(result).toStrictEqual([{ el: 'a', len: 2 }, { el: 'b', len: 3 }, { el: 'a', len: 2 }]);
     });
 });
