@@ -34,12 +34,19 @@ describe('Point', () => {
             expect(p.equals(p)).toBe(true);
         });
 
-        it ('should return false when comparing against a point at different coords', () => {
+        it('should return false when comparing against a point at different coords', () => {
             const p = new Point(5, 4);
 
             expect(p.equals(new Point(3, 3))).toBe(false);
             expect(p.equals(new Point(5, 3))).toBe(false);
             expect(p.equals(new Point(3, 4))).toBe(false);
+        });
+    });
+
+    describe('isOrigin', () => {
+        it('should indicate whether or not the point is at the origin (0, 0)', () => {
+            expect(new Point().isOrigin()).toBe(true);
+            expect(new Point(1, 2).isOrigin()).toBe(false);
         });
     });
 });

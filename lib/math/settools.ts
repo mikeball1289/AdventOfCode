@@ -60,3 +60,10 @@ export function sum(list: number[]) {
 export function prod(list: number[]) {
     return list.reduce((a, b) => a * b, 1);
 }
+
+/**
+ * Pairs each element in list1 with each element in list2
+ */
+export function cross<A, B>(list1: A[], list2: B[]): [A, B][] {
+    return list1.flatMap(el1 => list2.map(el2 => [el1, el2] as [A, B]));
+}

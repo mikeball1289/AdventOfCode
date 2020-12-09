@@ -1,7 +1,7 @@
 import { IntCode, OPCode } from './IntCode';
 
 const testComputer = new IntCode([
-    OPCode.ADD, 9, 10, 3,
+    OPCode.ADD, 9, 11, 3,
     OPCode.MULT, 10, 11, 7,
     OPCode.HALT,
     1, 2, 3,
@@ -87,7 +87,7 @@ describe('IntCode', () => {
         it('should run the current ADD instruction', () => {
             const result = testComputer.step();
 
-            expect(result.getAddress(3)).toBe(3);
+            expect(result.getAddress(3)).toBe(4);
             expect(result.cpuState).toStrictEqual({
                 pc: 4,
             });
@@ -121,7 +121,7 @@ describe('IntCode', () => {
         it('should run the program to completion', () => {
             const result = testComputer.execute();
 
-            expect(result.getAddress(3)).toBe(3);
+            expect(result.getAddress(3)).toBe(4);
             expect(result.getAddress(7)).toBe(6);
             expect(result.halted).toBe(true);
         });

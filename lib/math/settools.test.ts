@@ -1,4 +1,4 @@
-import { choose, intersect, prod, range, reduction, sum, uniq } from './settools';
+import { choose, cross, intersect, prod, range, reduction, sum, uniq } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -263,5 +263,19 @@ describe('prod', () => {
 
     it('should return 1 when the list is empty', () => {
         expect(prod([])).toBe(1);
+    });
+});
+
+describe('cross', () => {
+    it('should pair each element in the first list with each element in the second list', () => {
+        const list1 = [1, 2, 3];
+        const list2 = ['a', 'b'];
+
+        expect(cross(list1, list2)).toStrictEqual([[1, 'a'], [1, 'b'], [2, 'a'], [2, 'b'], [3, 'a'], [3, 'b']]);
+    });
+
+    it('should be empty if either input list is empty', () => {
+        expect(cross([1, 2, 3], [])).toStrictEqual([]);
+        expect(cross([], [1, 2, 3])).toStrictEqual([]);
     });
 });

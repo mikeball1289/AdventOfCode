@@ -8,4 +8,8 @@ export class Point {
     equals(other: Point) {
         return this.x === other.x && this.y === other.y;
     }
+
+    isOrigin() {
+        return this.x === 0 && this.y === 0;
+    }
 }
