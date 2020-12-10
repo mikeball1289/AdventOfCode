@@ -90,3 +90,10 @@ export function blocks<T>(list: T[]): { el: T, len: number }[] {
 
     return list.reduce((sets: { el: T, len: number }[], item) => groupInto(sets, item), []);
 }
+
+export function firstDifferences(list: number[]) {
+    return zip(list, list.slice(1)).map(([a, b]) => b - a);
+}
+
+export const ascending = (a: number, b: number) => a - b;
+export const descending = (a: number, b: number) => b - a;

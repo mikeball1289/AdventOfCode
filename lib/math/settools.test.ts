@@ -1,4 +1,4 @@
-import { blocks, choose, cross, eq, intersect, prod, range, reduction, sum, uniq, zip } from './settools';
+import { ascending, blocks, choose, cross, descending, eq, firstDifferences, intersect, prod, range, reduction, sum, uniq, zip } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -315,5 +315,28 @@ describe('blocks', () => {
         const result = blocks('aabbbaa'.split(''));
 
         expect(result).toStrictEqual([{ el: 'a', len: 2 }, { el: 'b', len: 3 }, { el: 'a', len: 2 }]);
+    });
+});
+
+describe('ascending', () => {
+    it('should sort an array of numbers in ascending order', () => {
+        expect([4, 5, 2, -1, 7].sort(ascending)).toStrictEqual([-1, 2, 4, 5, 7]);
+    });
+});
+
+describe('descending', () => {
+    it('should sort an array of numbers in a descending order', () => {
+        expect([4, 5, 2, -1, 7].sort(descending)).toStrictEqual([7, 5, 4, 2, -1]);
+    });
+});
+
+describe('firstDifferences', () => {
+    it('should return the difference between each pair of consecutive elements in the given array', () => {
+        expect(firstDifferences([1, -2, -1, 3, 5])).toStrictEqual([-3, 1, 4, 2]);
+    });
+
+    it('should return an empty array if the given set is empty or has only one element', () => {
+        expect(firstDifferences([])).toStrictEqual([]);
+        expect(firstDifferences([1])).toStrictEqual([]);
     });
 });

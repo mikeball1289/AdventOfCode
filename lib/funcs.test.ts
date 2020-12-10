@@ -1,4 +1,4 @@
-import { converge, maybeDo, sat } from './funcs';
+import { converge, maybeDo, memoize, sat } from './funcs';
 
 describe('converge', () => {
     it('should throw an error if the function never converges', () => {
@@ -47,5 +47,37 @@ describe('sat', () => {
 
         expect(checker(6)).toBe(true);
         expect(checker(5)).toBe(false);
+    });
+});
+
+describe('memoize', () => {
+    const fibs = jest.fn();
+    fibs.mockImplementation(n => n <= 1 ? 1 : (fibs(n - 2) + fibs(n - 1)));
+
+    it('should remember function invokations and not fully evaluate the function if it already knows the answer', () => {
+        const memFibs = memoize(fibs);
+
+        const slowResult = memFibs(5);
+        expect(slowResult).toBe(8);
+        expect(fibs.mock.calls.length).toBe(15);
+
+        const fastResult = memFibs(5);
+        expect(fastResult).toBe(8);
+        expect(fibs.mock.calls.length).toBe(15);
+
+        fibs.mockClear();
+    });
+
+    it('should accept a custom hash function and use that for lookups', () => {
+        const memFibs = memoize(fibs, () => 'a'); // every call is treated the same
+
+        const slowResult = memFibs(5);
+        expect(slowResult).toBe(8);
+        expect(fibs.mock.calls.length).toBe(15);
+
+        const fastResult = memFibs(1); // should use the precomputed value for 5
+        expect(fastResult).toBe(8);
+        expect(fibs.mock.calls.length).toBe(15);
+        fibs.mockClear();
     });
 });

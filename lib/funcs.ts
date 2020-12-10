@@ -33,3 +33,15 @@ export function maybeDo<T, R>(fn: (...args: T[]) => R, ...rest: Maybe<T>[]): May
 export function sat<T>(preds: ((input: T) => boolean)[]): (input: T) => boolean {
     return input => preds.reduce((sats: boolean, fn) => sats && fn(input), true);
 }
+
+type ArgsOf<T> = T extends (...args: infer ArgType) => any ? ArgType : never;
+
+export function memoize<fnT extends (...args: any[]) => any>(fn: fnT, hasher?: (...args: ArgsOf<fnT>) => string): fnT {
+    const lookup: { [hash: string]: ReturnType<fnT> } = {};
+    const h = hasher ?? ((...rest: any[]) => rest.map(a => a.toString()).join(','));
+
+    return ((...args: ArgsOf<fnT>) => {
+        const hash = h(...args);
+        return Object.prototype.hasOwnProperty.call(lookup, hash) ? lookup[hash] : lookup[hash] = fn(...args);
+    }) as fnT;
+}
