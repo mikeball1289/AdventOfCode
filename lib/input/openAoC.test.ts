@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { openAoC } from './openAoC';
+import { ints, openAoC } from './openAoC';
 
 jest.mock('fs');
 
@@ -29,5 +29,24 @@ describe('openAoC', () => {
         const result = openAoC('test', ['\n', /[25],/]);
 
         expect(result).toStrictEqual([['1,', '3'], ['4,', '6']]);
+    });
+
+    it('should run the provided processing function on each token', () => {
+        const result = openAoC('test', ['\n', ','], ints);
+
+        expect(result).toStrictEqual([[1, 2, 3], [4, 5, 6]]);
+    });
+});
+
+describe('ints', () => {
+    it('should read a base 10 number string into an integer', () => {
+        expect(ints('2')).toBe(2);
+        expect(ints('42')).toBe(42);
+        expect(ints('-169')).toBe(-169);
+    });
+
+    it('should correctly recognize edge cases', () => {
+        expect(ints('2.5')).toBe(2);
+        expect(ints('abc')).toBeNaN();
     });
 });

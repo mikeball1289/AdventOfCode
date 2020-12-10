@@ -1,11 +1,10 @@
-import { openAoC } from '../../../lib/input/openAoC';
+import { ints, openAoC } from '../../../lib/input/openAoC';
 import { range } from '../../../lib/math/settools';
 import { IntCode } from '../../lib/IntCode';
 
 describe('Day 2 - 1202 Program Alarm', () => {
     test('Part 1 solves', () => {
-        const inputText = openAoC('./2019/input/day2input.txt', [',']);
-        const program = inputText.map(n => parseInt(n, 10));
+        const program = openAoC('./2019/input/day2input.txt', [','], ints);
         const computer = new IntCode(program);
 
         const result = computer.setAddress(1, 12).setAddress(2, 2).execute();
@@ -13,8 +12,7 @@ describe('Day 2 - 1202 Program Alarm', () => {
     });
 
     test('Part 2 solves', () => {
-        const inputText = openAoC('./2019/input/day2input.txt', [',']);
-        const program = inputText.map(n => parseInt(n, 10));
+        const program = openAoC('./2019/input/day2input.txt', [','], ints);
         const computer = new IntCode(program);
 
         const inputs = range(0, 10000, 1).map(n => [Math.floor(n / 100), n % 100] as [number, number]);

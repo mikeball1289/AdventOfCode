@@ -62,26 +62,18 @@ describe('TreeField', () => {
                 '.#..#...#.#\n';
             const field = TreeField.fromText(text);
 
-            const testCases = [{
-                slope: [1, 1],
-                result: 2,
-            }, {
-                slope: [3, 1],
-                result: 7,
-            }, {
-                slope: [5, 1],
-                result: 3,
-            }, {
-                slope: [7, 1],
-                result: 4,
-            }, {
-                slope: [1, 2],
-                result: 2,
-            }];
+            const testCases = [
+                [1, 1],
+                [3, 1],
+                [5, 1],
+                [7, 1],
+                [1, 2],
+            ];
 
-            for (const testCase of testCases) {
-                expect(field.collisions(new Point(testCase.slope[0], testCase.slope[1]))).toBe(testCase.result);
-            }
+            const results = testCases.map(([x, y]) => field.collisions(new Point(x, y)));
+            const expectedResults = [2, 7, 3, 4, 2];
+
+            expect(results).toStrictEqual(expectedResults);
         });
     });
 });
