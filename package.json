@@ -8,8 +8,8 @@
     "test": "jest",
     "test:coverage": "jest --collectCoverage lib",
     "cloc": "cloc days lib --by-file",
-    "cloc:app": "cloc days lib --by-file --not-match-f=\"\\.test\\.ts$\"",
-    "cloc:tests": "cloc days lib --by-file --match-f=\"\\.test\\.ts$\"",
+    "cloc:app": "cloc 2019 2020 lib --by-file --not-match-f=\"\\.test\\.ts$\"",
+    "cloc:tests": "cloc 2019 2020 lib --by-file --match-f=\"\\.test\\.ts$\"",
     "lint": "tslint --project ."
   },
   "repository": {

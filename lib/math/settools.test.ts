@@ -1,4 +1,4 @@
-import { ascending, blocks, choose, cross, descending, eq, firstDifferences, intersect, prod, range, reduction, sum, uniq, zip } from './settools';
+import { ascending, blocks, choose, count, countBy, cross, descending, eq, firstDifferences, intersect, prod, range, reduction, sum, uniq, zip } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -338,5 +338,24 @@ describe('firstDifferences', () => {
     it('should return an empty array if the given set is empty or has only one element', () => {
         expect(firstDifferences([])).toStrictEqual([]);
         expect(firstDifferences([1])).toStrictEqual([]);
+    });
+});
+
+describe('count', () => {
+    it('should count the number of instances of the given element in the list', () => {
+        const testList = [1, 2, 1, 3];
+
+        expect(count(testList, 1)).toBe(2);
+        expect(count(testList, 2)).toBe(1);
+        expect(count(testList, 4)).toBe(0);
+    });
+});
+
+describe('countBy', () => {
+    it('should count the number of elements in the list that satisfy the given condition', () => {
+        const testList = [1, 2, 1, 3];
+
+        expect(countBy(testList, el => el % 2 === 1)).toBe(3);
+        expect(countBy(testList, el => el > 4)).toBe(0);
     });
 });

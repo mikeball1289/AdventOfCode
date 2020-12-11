@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { ints, openAoC } from './openAoC';
+import { ints, openAoC, roughParse } from './openAoC';
 
 jest.mock('fs');
 
@@ -33,6 +33,32 @@ describe('openAoC', () => {
 
     it('should run the provided processing function on each token', () => {
         const result = openAoC('test', ['\n', ','], ints);
+
+        expect(result).toStrictEqual([[1, 2, 3], [4, 5, 6]]);
+    });
+});
+
+describe('roughParse', () => {
+    it('should split the input on the given character and drop blank inputs', () => {
+        const result = roughParse('1,2,3\n4,5,6\n', ['\n']);
+
+        expect(result).toStrictEqual(['1,2,3', '4,5,6']);
+    });
+
+    it('should split multidimensional data hierarchically on the list of tokens', () => {
+        const result = roughParse('1,2,3\n4,5,6\n', ['\n', ',']);
+
+        expect(result).toStrictEqual([['1', '2', '3'], ['4', '5', '6']]);
+    });
+
+    it('should accept regexp as a split token', () => {
+        const result = roughParse('1,2,3\n4,5,6\n', ['\n', /[25],/]);
+
+        expect(result).toStrictEqual([['1,', '3'], ['4,', '6']]);
+    });
+
+    it('should run the provided processing function on each token', () => {
+        const result = roughParse('1,2,3\n4,5,6\n', ['\n', ','], ints);
 
         expect(result).toStrictEqual([[1, 2, 3], [4, 5, 6]]);
     });

@@ -97,3 +97,11 @@ export function firstDifferences(list: number[]) {
 
 export const ascending = (a: number, b: number) => a - b;
 export const descending = (a: number, b: number) => b - a;
+
+export function count<T>(list: T[], el: T) {
+    return list.filter(e => e === el).length;
+}
+
+export function countBy<T>(list: T[], pred: (el: T) => boolean) {
+    return list.filter(pred).length;
+}
