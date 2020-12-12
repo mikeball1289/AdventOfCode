@@ -12,4 +12,16 @@ export class Point {
     isOrigin() {
         return this.x === 0 && this.y === 0;
     }
+
+    get manhattanDistance() {
+        return Math.abs(this.x) + Math.abs(this.y);
+    }
+
+    rotateLeft() {
+        return new Point(-this.y, this.x);
+    }
+
+    rotateRight() {
+        return new Point(this.y, -this.x);
+    }
 }

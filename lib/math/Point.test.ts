@@ -49,4 +49,38 @@ describe('Point', () => {
             expect(new Point(1, 2).isOrigin()).toBe(false);
         });
     });
+
+    describe('manhattanDistance', () => {
+        it('should return the manhattan distance from the origin to the point', () => {
+            const result = new Point(3, 4).manhattanDistance;
+
+            expect(result).toBe(7);
+        });
+
+        it('should take the absolute value of the point coords', () => {
+            const result = new Point(-3, -4).manhattanDistance;
+
+            expect(result).toBe(7);
+        });
+    });
+
+    describe('rotateRight', () => {
+        it('should rotate the point into the next right quadrant about the origin', () => {
+            const point = new Point(3, 5);
+            expect(point.rotateRight().toString()).toBe('(5, -3)');
+            expect(point.rotateRight().rotateRight().toString()).toBe('(-3, -5)');
+            expect(point.rotateRight().rotateRight().rotateRight().toString()).toBe('(-5, 3)');
+            expect(point.rotateRight().rotateRight().rotateRight().rotateRight().toString()).toBe('(3, 5)');
+        });
+    });
+
+    describe('rotateLeft', () => {
+        it('should rotate the point into the next left quadrant about the origin', () => {
+            const point = new Point(3, 5);
+            expect(point.rotateLeft().toString()).toBe('(-5, 3)');
+            expect(point.rotateLeft().rotateLeft().toString()).toBe('(-3, -5)');
+            expect(point.rotateLeft().rotateLeft().rotateLeft().toString()).toBe('(5, -3)');
+            expect(point.rotateLeft().rotateLeft().rotateLeft().rotateLeft().toString()).toBe('(3, 5)');
+        });
+    });
 });

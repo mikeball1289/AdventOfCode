@@ -1,3 +1,5 @@
+import { range } from './math/settools';
+
 /**
  * Repeatedly apply a function until it reaches a fixed point
  * @param fn The function to find the fixed point of
@@ -44,4 +46,11 @@ export function memoize<fnT extends (...args: any[]) => any>(fn: fnT, hasher?: (
         const hash = h(...args);
         return Object.prototype.hasOwnProperty.call(lookup, hash) ? lookup[hash] : lookup[hash] = fn(...args);
     }) as fnT;
+}
+
+/**
+ * Creates a new function which applies the given function n number of times
+ */
+export function times<T>(fn: (a: T) => T, n: number): (a: T) => T {
+    return a => range(0, n).reduce((result: T, _) => fn(result), a);
 }

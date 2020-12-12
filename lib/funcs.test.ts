@@ -1,4 +1,4 @@
-import { converge, maybeDo, memoize, sat } from './funcs';
+import { converge, maybeDo, memoize, sat, times } from './funcs';
 
 describe('converge', () => {
     it('should throw an error if the function never converges', () => {
@@ -79,5 +79,23 @@ describe('memoize', () => {
         expect(fastResult).toBe(8);
         expect(fibs.mock.calls.length).toBe(15);
         fibs.mockClear();
+    });
+});
+
+describe('times', () => {
+    it('should apply the given function n times to an input', () => {
+        const addOne = (n: number) => n + 1;
+
+        const addThree = times(addOne, 3);
+
+        expect(addThree(5)).toBe(8);
+    });
+
+    it('should throw an error if n is negative', () => {
+        const addOne = (n: number) => n + 1;
+
+        const addNegativeThree = times(addOne, -3);
+
+        expect(() => addNegativeThree(5)).toThrowError();
     });
 });
