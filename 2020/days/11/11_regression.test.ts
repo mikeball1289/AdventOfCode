@@ -18,7 +18,6 @@ describe('Day 11 - Seating System', () => {
         const initialState = openAoC('./2020/input/day11input.txt', ['\n', ''], seatCellChar);
 
         const ca = new SeatCA(new Map2d(initialState));
-
         const part2FinalState = converge(state => state.stepLineOfSight(), ca, (a, b) => a.cells.toString() === b.cells.toString());
 
         expect(count(part2FinalState.cells.values(), SeatCell.FILLED_SEAT)).toBe(2121);
