@@ -1,4 +1,7 @@
 {
+    "linterOptions": {
+        "exclude": ["**/*.js"]
+    },
     "extends": "tslint:latest",
     "rules": {
         "no-console": false,

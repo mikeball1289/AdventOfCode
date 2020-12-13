@@ -1,4 +1,4 @@
-import { ascending, blocks, choose, count, countBy, cross, descending, eq, firstDifferences, intersect, prod, range, reduction, sum, uniq, zip } from './settools';
+import { ascending, blocks, choose, count, countBy, cross, descending, eq, firstDifferences, intersect, maxBy, minBy, prod, range, reduction, sum, uniq, zip } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -357,5 +357,33 @@ describe('countBy', () => {
 
         expect(countBy(testList, el => el % 2 === 1)).toBe(3);
         expect(countBy(testList, el => el > 4)).toBe(0);
+    });
+});
+
+describe('minBy', () => {
+    it('should throw an error when given an empty list', () => {
+        expect(() => minBy([], n => n)).toThrowError();
+    });
+
+    it('should return the minimum element when computed through the given mapping', () => {
+        const list = ['3', '1', '-5', '-2'];
+        const result = minBy(list, ns => Math.abs(parseInt(ns, 10)));
+
+        expect(result).toBe('1');
+        expect(minBy(list, s => s.length)).toBe('3');
+    });
+});
+
+describe('minBy', () => {
+    it('should throw an error when given an empty list', () => {
+        expect(() => maxBy([], n => n)).toThrowError();
+    });
+
+    it('should return the maximum element when computed through the given mapping', () => {
+        const list = ['3', '1', '-5', '-2'];
+        const result = maxBy(list, ns => Math.abs(parseInt(ns, 10)));
+
+        expect(result).toBe('-5');
+        expect(maxBy(list, s => s.length)).toBe('-5');
     });
 });

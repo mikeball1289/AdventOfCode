@@ -105,3 +105,15 @@ export function count<T>(list: T[], el: T) {
 export function countBy<T>(list: T[], pred: (el: T) => boolean) {
     return list.filter(pred).length;
 }
+
+export function minBy<T>(list: T[], mapping: (el: T, i: number, list: T[]) => number) {
+    if (list.length === 0) throw new Error('No elements in list');
+    const weightedList = list.map((el, i, l) => [el, mapping(el, i, l)] as [T, number]);
+    return weightedList.slice(1).reduce((best, curr) => curr[1] < best[1] ? curr : best, weightedList[0])[0];
+}
+
+export function maxBy<T>(list: T[], mapping: (el: T, i: number, list: T[]) => number) {
+    if (list.length === 0) throw new Error('No elements in list');
+    const weightedList = list.map((el, i, l) => [el, mapping(el, i, l)] as [T, number]);
+    return weightedList.slice(1).reduce((best, curr) => curr[1] > best[1] ? curr : best, weightedList[0])[0];
+}
