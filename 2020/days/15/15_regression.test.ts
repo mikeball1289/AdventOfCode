@@ -10,7 +10,12 @@ describe('Day 15 - Rambunctious Recitation', () => {
         expect(last(game.playUntilTime(2020).numberHistory)).toBe(610);
     });
 
+    // This part was solved in C, this code quickly runs out of memory
     test.skip('Part 2 solves', () => {
-        expect(true).toBe(false);
+        const input = [9, 12, 1, 4, 17, 0, 18];
+
+        const game = NumberGame.fromStart(input);
+
+        expect(last(game.playUntilTime(30000000).numberHistory)).toBe(1407);
     });
 });

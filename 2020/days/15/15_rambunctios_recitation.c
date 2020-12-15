@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
     // The number of steps we take represents an upper bound to the
     // numbers that we'll see, starting numbers excluded
     int* lastSeen = malloc(sizeof(int) * timeUpTo);
-    memset(lastSeen, 0, timeUpTo);
+    memset(lastSeen, 0, sizeof(int) * timeUpTo);
     int time = 1;
 
     // Populate our last seen times with the input numbers
