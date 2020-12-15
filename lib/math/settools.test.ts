@@ -1,4 +1,4 @@
-import { ascending, blocks, choose, count, countBy, cross, descending, eq, firstDifferences, intersect, maxBy, minBy, prod, range, reduction, sum, uniq, zip } from './settools';
+import { ascending, blocks, choose, count, countBy, cross, descending, eq, firstDifferences, intersect, last, maxBy, minBy, prod, range, reduction, sum, uniq, zip } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -385,5 +385,17 @@ describe('minBy', () => {
 
         expect(result).toBe('-5');
         expect(maxBy(list, s => s.length)).toBe('-5');
+    });
+});
+
+describe('last', () => {
+    it('should return the last element in the list', () => {
+        expect(last([1, 2, 3])).toBe(3);
+        expect(last([1, 2, 3, 1])).toBe(1);
+        expect(last([2])).toBe(2);
+    });
+
+    it('should return undefined if the list is empty', () => {
+        expect(last([])).toBeUndefined();
     });
 });

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Solutions for the Advent of Code 2020 (https://adventofcode.com/2020)",
   "scripts": {
-    "build": "tsc -p .",
+    "build": "tsc -p tsconfig.build.json",
     "clean": "rimraf bin",
     "test": "jest",
     "test:coverage": "jest --collectCoverage lib",
