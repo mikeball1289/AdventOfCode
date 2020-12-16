@@ -121,3 +121,22 @@ export function maxBy<T>(list: T[], mapping: (el: T, i: number, list: T[]) => nu
 export function last<T>(list: T[]): T | undefined {
     return list.slice(-1)[0];
 }
+
+export function only<T>(list: T[]): T {
+    if (list.length !== 1) {
+        throw new Error('List must contain exactly one element');
+    }
+    return list[0];
+}
+
+export function transpose<T>(matrix: T[][]): T[][] {
+    if (matrix.length === 0) {
+        return [];
+    }
+
+    if (matrix.some(r => r.length !== matrix[0].length)) {
+        throw new Error('Cannot transpose non-rectangular matrix');
+    }
+
+    return matrix[0].map((_, i) => matrix.map(r => r[i]));
+}

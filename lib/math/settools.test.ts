@@ -1,4 +1,4 @@
-import { ascending, blocks, choose, count, countBy, cross, descending, eq, firstDifferences, intersect, last, maxBy, minBy, prod, range, reduction, sum, uniq, zip } from './settools';
+import { ascending, blocks, choose, count, countBy, cross, descending, eq, firstDifferences, intersect, last, maxBy, minBy, only, prod, range, reduction, sum, transpose, uniq, zip } from './settools';
 
 describe('choose function', () => {
     it('should return an empty array when trying to select more elements than there are in the set', () => {
@@ -397,5 +397,48 @@ describe('last', () => {
 
     it('should return undefined if the list is empty', () => {
         expect(last([])).toBeUndefined();
+    });
+});
+
+describe('only', () => {
+    it('should extract the only element in the list', () => {
+        const result = only([4]);
+
+        expect(result).toBe(4);
+    });
+
+    it('should throw an error if the list doesn\'t contain exactly one element', () => {
+        expect(() => only([])).toThrowError();
+        expect(() => only([1, 2])).toThrowError();
+        expect(() => only(['a', 2, 'c'])).toThrowError();
+    });
+});
+
+describe('transpose', () => {
+    it('should return an empty matrix when given an empty matrix', () => {
+        expect(transpose([])).toStrictEqual([]);
+    });
+
+    it('should throw an error when given a non-rectangular matrix', () => {
+        const testFn = () => transpose([
+            [1, 2, 3],
+            [4, 5],
+            [6, 7, 8],
+        ]);
+
+        expect(testFn).toThrowError();
+    });
+
+    it('should compute the transposition of the given matrix', () => {
+        const result = transpose([
+            [1, 2, 3],
+            [4, 5, 6],
+        ]);
+
+        expect(result).toStrictEqual([
+            [1, 4],
+            [2, 5],
+            [3, 6],
+        ]);
     });
 });

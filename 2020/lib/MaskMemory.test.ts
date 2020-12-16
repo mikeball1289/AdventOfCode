@@ -126,6 +126,15 @@ describe('MaskMemory', () => {
         expect(mm.sumContents()).toBe(12);
     });
 
+    it('should handle empty masks', () => {
+        const mm = MaskMemory.EMPTY
+            .insert('', 1)
+            .insert('0', 2)
+            .insert('1', 3);
+
+        expect(mm.sumContents()).toBe(6);
+    });
+
     it('should pass the given test case', () => {
         const mm = MaskMemory.EMPTY
             .insert(applyMemoryMask('000000000000000000000000000000X1001X', 42), 100)

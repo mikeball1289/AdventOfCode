@@ -46,6 +46,13 @@ describe('NumberGame', () => {
             });
             expect(result.numberHistory).toStrictEqual([0, 3, 6, 3, 4]);
         });
+
+        it('should be able to say the first number', () => {
+            const result = new NumberGame().sayNumber(42);
+
+            expect(result.time).toBe(1);
+            expect(result.numberHistory).toStrictEqual([42]);
+        });
     });
 
     describe('getNextNumber', () => {
